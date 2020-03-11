@@ -110,7 +110,7 @@ public class Articulo {
    */
   void incrementaStock(int cantidad) {
  // Extraemos las unidades del artículo del siguiente código y incrementamos las unidades del stock
-    setUnidades(getUnidades() + cantidad);
+    setUnidades(getUnidades() + unidades);
 
   }
 
@@ -163,7 +163,7 @@ public class Articulo {
    */
   @Override
   public String toString() {
-    return      "Código artículo: " + codigo + "\n"
+    return      "\nCódigo artículo: " + codigo + "\n"
         +   "Descripción: " + descripcion + "\n"
         +   "Precio Compra: " + precioC + "\n"
         +   "Precio Venta: " + precioV + "\n"

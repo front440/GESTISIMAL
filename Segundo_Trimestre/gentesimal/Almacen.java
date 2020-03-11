@@ -21,7 +21,7 @@ package gentesimal;
 import java.util.ArrayList;
 
 public class Almacen {
-
+  
   /**
    * En este ArrayList almacenaremos los artículos que vayamos añadiendo
    */
@@ -108,6 +108,11 @@ public class Almacen {
       System.out.println(articulo);
     }
 
+  }
+  
+  @Override
+  public String toString() {
+    return "" + almacen;
   }
 
 }

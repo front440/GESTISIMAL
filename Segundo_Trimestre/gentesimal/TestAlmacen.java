@@ -46,7 +46,8 @@ public class TestAlmacen {
         decrementa();
         break;
       case 6: // Artículos de almacen
-        almacen.muestra();
+        System.out.println(almacen);
+        // almacen.muestra();
         break;
       case 7:
         salir = false;
