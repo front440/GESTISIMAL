@@ -48,47 +48,47 @@ public class Articulo {
 
 
   // Modificadores
-  public static int getCodigo() {
+  private int getCodigo() {
     return siguienteCodigo;
   }
 
-  public static void setCodigo(int codigo) {
+  private void setCodigo(int codigo) {
     Articulo.siguienteCodigo = codigo;
   }
 
-  public String getDescripcion() {
+  private String getDescripcion() {
     return descripcion;
   }
 
-  public void setDescripcion(String descripcion) {
+  void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
 
-  public double getPrecioC() {
+  private double getPrecioC() {
     return precioC;
   }
 
-  public void setPrecioC(double precioC) {
+  private void setPrecioC(double precioC) {
     // assert esCorrecto(precioC, this.precioV, this.unidades): "El valor
     // introducido no puede ser negativo";
     this.precioC = precioC;
   }
 
-  public double getPrecioV() {
+  private double getPrecioV() {
     return precioV;
   }
 
-  void setPrecioV(double precioV) {
+  private void setPrecioV(double precioV) {
     // assert esCorrecto(this.precioC, precioV, this.unidades): "El valor
     // introducido no puede ser negativo";
     this.precioV = precioV;
   }
 
-  public int getUnidades() {
+  private int getUnidades() {
     return unidades;
   }
 
-  public void setUnidades(int unidades) {
+  private void setUnidades(int unidades) {
     assert esCorrecto(this.precioC, this.precioV, unidades) : "El valor introducido no puede ser negativo";
     this.unidades = unidades;
   }
