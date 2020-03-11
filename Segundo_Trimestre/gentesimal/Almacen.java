@@ -20,12 +20,12 @@ package gentesimal;
 
 import java.util.ArrayList;
 
-public class Almacen {
+public class almacen {
   
   /**
    * En este ArrayList almacenaremos los artículos que vayamos añadiendo
    */
-  static ArrayList<Articulo> almacen = new ArrayList<Articulo>();
+  private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
 
   /**
    * Este método añadirá al ArrayList Almacen el artículo con los datos que
@@ -36,7 +36,7 @@ public class Almacen {
    * @param precioV
    * @param unidades
    */
-  public static void annadir(String descripcion, double precioC, double precioV, int unidades) {
+  public void annadir(String descripcion, double precioC, double precioV, int unidades) {
     almacen.add(new Articulo(descripcion, precioC, precioV, unidades));
   }
 
@@ -46,7 +46,7 @@ public class Almacen {
    * @param codigo
    * @return
    */
-  public static boolean borrar(int codigo) {
+  public boolean borrar(int codigo) {
     return almacen.remove(new Articulo(codigo));
 
   }
@@ -57,7 +57,7 @@ public class Almacen {
    * @param codigo
    * @param numUnidades
    */
-  public static void incrementa(int codigo, int cantidad) {
+  public void incrementa(int codigo, int cantidad) {
     // Articulo articulo = get(codigo);
     get(codigo).incrementaStock(cantidad);
     // Almacen.get(codigo).setUnidades(Almacen.get(codigo).getUnidades() +
@@ -69,7 +69,7 @@ public class Almacen {
    * @param codigo
    * @return
    */
-  private static Articulo get(int codigo) {
+  private Articulo get(int codigo) {
     int indice = almacen.indexOf(new Articulo(codigo));
     if (indice == -1)
       return null;
@@ -82,7 +82,7 @@ public class Almacen {
    * @param codigo
    * @param cantidad
    */
-  public static void decrementa(int codigo, int cantidad) {
+  public void decrementa(int codigo, int cantidad) {
     // Articulo articulo = get(codigo);
     get(codigo).decrementaStock(cantidad);
   }
@@ -93,7 +93,7 @@ public class Almacen {
    * @param codigo
    * @param descripcion
    */
-  public static void modifica(int codigo, String descripcion) {
+  public void modifica(int codigo, String descripcion) {
     // Articulo articulo = Almacen.get(Almacen.indexOf(new Articulo(codigo)));
     get(codigo).modificaDescripcion(descripcion);
   }
@@ -102,7 +102,7 @@ public class Almacen {
    * Método que, mediante un for-each recorremos el todos los artículos del
    * ArrayList y nos lo muestra.
    */
-  public static void muestra() {
+  public void muestra() {
 
     for (Articulo articulo : almacen) {
       System.out.println(articulo);

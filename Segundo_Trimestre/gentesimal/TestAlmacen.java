@@ -1,12 +1,12 @@
 package gentesimal;
 
 
-import gentesimal.Almacen;
+import gentesimal.almacen;
 import utiles.Teclado;
 
 public class TestAlmacen {
 
-  static Almacen almacen = new Almacen();
+  static almacen almacen = new almacen();
 
   public static void main(String[] args) {
 
@@ -59,16 +59,16 @@ public class TestAlmacen {
   }
 
   private static void annadirVarios() {
-    Almacen.annadir("aa", 11, 11, 11);
-    Almacen.annadir("bb", 22, 22, 22);
-    Almacen.annadir("cc", 33, 33, 33);
+    almacen.annadir("aa", 11, 11, 11);
+    almacen.annadir("bb", 22, 22, 22);
+    almacen.annadir("cc", 33, 33, 33);
   }
 
   /**
    * Método que imprime por pantalla los artículos del arraylist de almacen
    */
   private static void muestra() {
-    Almacen.muestra();
+    almacen.muestra();
     
   }
 
@@ -80,7 +80,7 @@ public class TestAlmacen {
     Double precioC = Teclado.leerDouble("Añade el precio de compra del artículo: ");
     Double precioV = Teclado.leerDouble("Añade el precio de venta del artículo: ");
     int unidades = Teclado.leerEntero("¿Cuantos artículos se van a añadir?");
-    Almacen.annadir(descripcion, precioC, precioV, unidades);
+    almacen.annadir(descripcion, precioC, precioV, unidades);
   }
 
   /**
@@ -88,7 +88,7 @@ public class TestAlmacen {
    */
   private static void borrar() {
     int codigo = Teclado.leerEntero("Código del producto que desee borrar:");
-    if (!Almacen.borrar(codigo)) System.err.println("Código inexistente");
+    if (!almacen.borrar(codigo)) System.err.println("Código inexistente");
 
   }
 
@@ -102,7 +102,7 @@ public class TestAlmacen {
       System.err.println("La cantidad a incrementar no puede ser menor que 0.");
     }
     else {
-      Almacen.incrementa(codigo, cantidad);
+      almacen.incrementa(codigo, cantidad);
     }
 
   }
@@ -118,7 +118,7 @@ public class TestAlmacen {
       System.err.println("La cantidad a decrementar no puede ser menor que 0.");
     }
     else {
-      Almacen.decrementa(codigo, cantidad);
+      almacen.decrementa(codigo, cantidad);
     }
 
   }
@@ -129,7 +129,7 @@ public class TestAlmacen {
   private static void modifica() {
     int codigo = Teclado.leerEntero("Codigo del producto que desea modificar: ");
     String descripcion = Teclado.leerCadena("Nueva descripción: ");
-    Almacen.modifica(codigo, descripcion);
+    almacen.modifica(codigo, descripcion);
 
   }
 
