@@ -1,12 +1,18 @@
 package poo;
 
+import utiles.Teclado;
+
 public class FraccionTest {
 
   public static void main(String[] args) {
 
     System.out.println("Test de fracción");
     
-    Fraccion f1 = new Fraccion(12,3);
+    int n = Teclado.getEntero("Introduce el numerador: ");
+    int d = Teclado.getEntero("Introduce el denominador: ");
+    
+    
+    Fraccion f1 = new Fraccion(n,d);
     
     System.out.println("Creamos fracción f1: " + f1);
     System.out.println("--------------------------");

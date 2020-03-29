@@ -23,7 +23,7 @@ public class Fraccion {
   // Modificadores
   
   // Getter numerador
-  public int getNumerador() {
+  public double getNumerador() {
     return numerador;
   }
   
@@ -33,7 +33,7 @@ public class Fraccion {
   }
   
 // Getter denominador
-  public int getDenominador() {
+  public double getDenominador() {
     return denominador;
   }
   
@@ -47,8 +47,9 @@ public class Fraccion {
     }
   }
   
-  public int resultadoReal() {
-    return this.numerador / this.denominador;
+  public double resultadoReal() {
+    double resultado = this.numerador /this.denominador;
+    return resultado;
   }
  
    /**
@@ -56,7 +57,7 @@ public class Fraccion {
     * @param numero
     * @return
     */
-  public int multiplicaNumero (int numero) {
+  public double multiplicaNumero (int numero) {
     return (this.numerador /  this.denominador) * numero;
   }
   
@@ -92,12 +93,12 @@ public class Fraccion {
    * implementar el método simplifica
    * @return
    */
-  private int maximoComunDivisor() {
+  private double maximoComunDivisor() {
     
-    int dividendo = this.numerador;
-    int divisor = this.denominador;
-    int resto = dividendo%divisor;
-    int mcd = 0;
+    double dividendo = this.numerador;
+    double divisor =  this.denominador;
+    double resto = dividendo%divisor;
+    double mcd = 0;
     
     while (resto != 0) {
       dividendo = divisor;
@@ -112,15 +113,13 @@ public class Fraccion {
    * Simplifica la fraccíon dividiendo el numerador y el denominador por el mcd
    */
   void simplifica() {
-    int mcd;
+    double mcd;
     mcd = this.maximoComunDivisor();
     this.numerador /= mcd;
     this.denominador /= mcd;
+    
   }
        
   
-  
-  
- 
 
 }

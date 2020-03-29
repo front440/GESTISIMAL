@@ -27,7 +27,7 @@ public class TestAlmacen {
       System.out.println("5) Salida mercancía: "); // Decrementar unidades
       System.out.println("6) Mostrar artículos de almacen: ");
       System.out.println("7) Salir: ");
-      int opcion = Teclado.leerEntero("Introduce opción: ");
+      int opcion = Teclado.getEntero("Introduce opción: ");
 
       switch (opcion) {
       case 1: // Añadir artículo:
@@ -76,10 +76,10 @@ public class TestAlmacen {
    * Método que añade artículos al ArrayList
    */
   private static void añadir() {
-    String descripcion = Teclado.leerCadena("Añade la descripción del artículo: ");
-    Double precioC = Teclado.leerDouble("Añade el precio de compra del artículo: ");
-    Double precioV = Teclado.leerDouble("Añade el precio de venta del artículo: ");
-    int unidades = Teclado.leerEntero("¿Cuantos artículos se van a añadir?");
+    String descripcion = Teclado.getTexto("Añade la descripción del artículo: ");
+    Double precioC = Teclado.getDecimal("Añade el precio de compra del artículo: ");
+    Double precioV = Teclado.getDecimal("Añade el precio de venta del artículo: ");
+    int unidades = Teclado.getEntero("¿Cuantos artículos se van a añadir?");
     almacen.annadir(descripcion, precioC, precioV, unidades);
   }
 
@@ -87,7 +87,7 @@ public class TestAlmacen {
    * Método que borra artículos del ArrayList
    */
   private static void borrar() {
-    int codigo = Teclado.leerEntero("Código del producto que desee borrar:");
+    int codigo = Teclado.getEntero("Código del producto que desee borrar:");
     if (!almacen.borrar(codigo)) System.err.println("Código inexistente");
 
   }
@@ -96,8 +96,8 @@ public class TestAlmacen {
    * El siguiente método incrementa las unidades del artículo
    */
   private static void incrementa() {
-    int codigo = Teclado.leerEntero("Código del producto que desea incrementar: ");
-    int cantidad = Teclado.leerEntero("Cantidad a incrementar: ");
+    int codigo = Teclado.getEntero("Código del producto que desea incrementar: ");
+    int cantidad = Teclado.getEntero("Cantidad a incrementar: ");
     if (cantidad < 0) {
       System.err.println("La cantidad a incrementar no puede ser menor que 0.");
     }
@@ -111,8 +111,8 @@ public class TestAlmacen {
    * El siguiente método decrementa las unidades del artículo.
    */
   private static void decrementa() {
-    int codigo = Teclado.leerEntero("Codigo del producto que desea decrementar: ");
-    int cantidad = Teclado.leerEntero("Cantidad a decrementar: ");
+    int codigo = Teclado.getEntero("Codigo del producto que desea decrementar: ");
+    int cantidad = Teclado.getEntero("Cantidad a decrementar: ");
 
     if (cantidad < 0) {
       System.err.println("La cantidad a decrementar no puede ser menor que 0.");
@@ -127,8 +127,8 @@ public class TestAlmacen {
    * Este método mofidifica la de descripción del artículo.
    */
   private static void modifica() {
-    int codigo = Teclado.leerEntero("Codigo del producto que desea modificar: ");
-    String descripcion = Teclado.leerCadena("Nueva descripción: ");
+    int codigo = Teclado.getEntero("Codigo del producto que desea modificar: ");
+    String descripcion = Teclado.getTexto("Nueva descripción: ");
     almacen.modifica(codigo, descripcion);
 
   }

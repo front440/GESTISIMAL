@@ -1,5 +1,8 @@
 package poo;
 
+import excepciones.DimensionRectanguloError;
+import excepciones.TiempoIncorrectoError;
+
 public class Tiempo {
 
   //Atributos
@@ -12,10 +15,11 @@ public class Tiempo {
   private int segundos;
 
   // Constructor
-  Tiempo (int h, int m, int s) {
-    this.horas = h;
-    this.minutos = m;
-    this.segundos = s;
+  Tiempo (int h, int m, int s) throws TiempoIncorrectoError {
+    setHoras(h);
+    setMinutos(m);
+    setSegundos(s);
+    
   }
 
   // Salida formateada
@@ -30,27 +34,61 @@ public class Tiempo {
   public int getHoras() {
     return horas;
   }
+
   // Setter horas
-  public void setHoras(int horas) {
-    this.horas = horas;
+  public void setHoras(int horas) throws TiempoIncorrectoError {
+    if (tiempoCorrecto(horas, this.minutos, this.segundos)) {
+      this.horas = horas;
+    }
+    else {
+      throw new TiempoIncorrectoError("El tiempo no es correcto");
+    }
+
+
   }
   //Getter minutos
   public int getMinutos() {
     return minutos;
   }
+  
   // Setter minutos
-  public void setMinutos(int minutos) {
-    this.minutos = minutos;
+  public void setMinutos(int minutos) throws TiempoIncorrectoError {
+    if (tiempoCorrecto(this.horas, minutos, this.segundos)) {
+      this.minutos = minutos;
+    }
+    else {
+      throw new TiempoIncorrectoError("El tiempo no es correcto");
+    }
+      
   }
   //Getter segundos
   public int getSegundos() {
     return segundos;
   }
   // Setter segundos
-  public void setSegundos(int segundos) {
-    this.segundos = segundos;
+  public void setSegundos(int segundos) throws TiempoIncorrectoError {
+    if (tiempoCorrecto(this.horas, this.minutos, segundos)) {
+      this.segundos = segundos;
+    }
+    else {
+      throw new TiempoIncorrectoError("El tiempo no es correcto");
+    }
   }
 
+
+  boolean tiempoCorrecto(int hora, int minuto, int segundo) {
+    if (hora < 0 || minuto < 0 || segundo < 0) {
+      return false;
+    }
+    if (minuto > 60 || segundo > 60) {
+      return false;
+    }
+    else {
+      return true;
+    }
+
+
+  }
   // Métodos
 
   /**
@@ -83,6 +121,7 @@ public class Tiempo {
   void sumaHoras (int horas) {
     this.horas += horas;
   }
+  
 
   /**
    * Método para restar al objeto las horas pasadas como parámetro
