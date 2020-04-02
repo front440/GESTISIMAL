@@ -1,5 +1,8 @@
 package gentesimal;
 
+import excepciones.CantidadNegativaError;
+import excepciones.PrecioNegativoError;
+
 /**
  * 
  * @author Francisco
@@ -27,13 +30,14 @@ public class Articulo {
   private static int siguienteCodigo = 1;
 
   // Constructor
-  Articulo(String descripcion, double precioC, double precioV, int unidades) {
-    //assert esCorrecto(precioC, precioV, unidades) : "El valor introducido no puede ser negativo";
-    this.descripcion = descripcion;
-    this.precioC = precioC;
-    this.precioV = precioV;
-    this.unidades = unidades;
-    this.codigo = generaCodigo();
+  Articulo(String descripcion, double precioC, double precioV, int unidades) throws PrecioNegativoError, CantidadNegativaError {
+    
+      this.codigo = generaCodigo();
+      setDescripcion(descripcion);
+      setPrecioC(precioC);
+      setPrecioV(precioV);
+      setUnidades(unidades);
+
 
   }
 
@@ -45,18 +49,19 @@ public class Articulo {
     this.codigo = codigo;
   }
 
-
-
   // Modificadores
-  private int getCodigo() {
-    return siguienteCodigo;
+  public int getCodigo() {
+    return codigo;
   }
+  //  public int getCodigo() {
+  //    return siguienteCodigo;
+  //  }
 
   private void setCodigo(int codigo) {
     Articulo.siguienteCodigo = codigo;
   }
 
-  private String getDescripcion() {
+  String getDescripcion() {
     return descripcion;
   }
 
@@ -64,7 +69,7 @@ public class Articulo {
     this.descripcion = descripcion;
   }
 
-  private double getPrecioC() {
+  double getPrecioC() {
     return precioC;
   }
 
@@ -74,7 +79,7 @@ public class Articulo {
     this.precioC = precioC;
   }
 
-  private double getPrecioV() {
+  double getPrecioV() {
     return precioV;
   }
 
@@ -84,13 +89,18 @@ public class Articulo {
     this.precioV = precioV;
   }
 
-  private int getUnidades() {
+  int getUnidades() {
     return unidades;
   }
 
-  private void setUnidades(int unidades) {
-    assert esCorrecto(this.precioC, this.precioV, unidades) : "El valor introducido no puede ser negativo";
-    this.unidades = unidades;
+  private void setUnidades(int unidades) throws CantidadNegativaError {
+    if (esCorrecto(this.precioC, this.precioV, unidades)) {
+      this.unidades = unidades;
+    }
+    else {
+      throw new CantidadNegativaError("El número de unidades no puede ser negativo");
+    }
+
   }
 
   // Métodos
@@ -107,19 +117,17 @@ public class Articulo {
   /**
    * modificaremos dentro del método incrementa las unidades pasadas como parámetro del artículo
    * @param cantidad
+   * @throws CantidadNegativaError 
    */
-  void incrementaStock(int cantidad) {
- // Extraemos las unidades del artículo del siguiente código y incrementamos las unidades del stock
-    if (cantidad < 0) {
-      System.err.println("La cantidad a decrementar no puede ser negativa");
+  void incrementaStock(int cantidad) throws CantidadNegativaError {
+
+    // Extraemos las unidades del artículo del siguiente código y incrementamos las unidades del stock
+    if (cantidad > 0) {
+      setUnidades(getUnidades() + unidades);
     }
     else {
-      setUnidades(getUnidades() + unidades);
-      if (getUnidades() < 0) {
-        System.err.println("El número de artículos no puede ser negativos");
-      }
+      throw new CantidadNegativaError("La cantidad a decrementar no puede ser negativa");
     }
-    
     
 
   }
@@ -127,25 +135,34 @@ public class Articulo {
   /**
    * modificaremos dentro del método decrementa las unidades pasadas como parámetro del artículo
    * @param cantidad
+   * @throws CantidadNegativaError 
    */
-  void decrementaStock(int cantidad) {
-    // Extraemos las unidades del artículo del siguiente código y decrementamos las unidades del stock
-    if (cantidad < 0) {
-      System.err.println("La cantidad a decrementar no puede ser negativa");
-    }
-    else {
+  void decrementaStock(int cantidad) throws CantidadNegativaError {
+
+    if (cantidad > 0) {
+      // Extraemos las unidades del artículo del siguiente código y decrementamos las unidades del stock
       setUnidades(getUnidades() - cantidad);
     }
-    
+    else {
+      throw new CantidadNegativaError("la cantidad a decrementar no puede ser negativa");
+    }
+
 
   }
 
   /**
    * El método modificará la descripción del artículo seleccionado
    * @param descripcion
+   * @param numUnidades 
+   * @param precioV 
+   * @param precioC 
+   * @throws CantidadNegativaError 
    */
-  void modificaDescripcion(String descripcion) {
+  void set(String descripcion, double precioC, double precioV, int numUnidades) throws CantidadNegativaError, PrecioNegativoError {
     setDescripcion(descripcion);
+    setPrecioC(precioC);
+    setPrecioV(precioV);
+    setUnidades(numUnidades);
 
   }
 
