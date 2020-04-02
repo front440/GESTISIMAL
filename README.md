@@ -15,12 +15,13 @@ Aprendemos **metodología** y diferentes componentes del lenguaje. A lo largo de
  - **Estructuras Secuenciales**
  - **Estructuras Alternativas**
  - **Estructuras Repetitivas**
+ - **Modularizar**
 
 ## 2do Trimestre
 
 En este trimestre ya comprendidas los componentes del lenguaje y sus metodología nos centramos en:
 
- - **Modularizar**
+
  - **Programación Orientada a Objetos**
  - **Colecciones**
  - **Ficheros**
