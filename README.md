@@ -1,3 +1,4 @@
+
 # Bienvenidos al Repositorio de Java
 
 Hola! Mi nombre es **Francisco Javier Campos Gutiérrez**, soy estudiante de Desarrollo de Aplicaciones Web en [IES Grán Capitán](https://informatica.iesgrancapitan.org/), Córdoba.
@@ -26,3 +27,5 @@ En este trimestre ya comprendidas los componentes del lenguaje y sus metodologí
  - **Colecciones**
  - **Ficheros**
  - **Excepciones**
+
+A lo largo del curso hacemos uso de un Libro de Java desde 0 de [Luis José Sánchez](https://github.com/LuisJoseSanchez).
