@@ -1,9 +1,18 @@
-package arrayList;
+package colecciones;
 
 import java.util.ArrayList;
+
 import java.util.Scanner;
 import java.util.Collection;
 import java.util.Collections;
+
+/**
+ * Escribe un programa que ordene 10 números enteros introducidos por teclado
+ * y almacenados en un objeto de la clase ArrayList.
+ * 
+ * @author Francisco
+ *
+ */
 
 public class Ejercicio02_ArrayList {
 

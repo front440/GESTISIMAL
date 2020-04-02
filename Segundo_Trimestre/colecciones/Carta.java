@@ -1,4 +1,4 @@
-package arrayList;
+package colecciones;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +55,9 @@ public class Carta {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
+    result = prime * result + Arrays.hashCode(n);
     result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+    result = prime * result + Arrays.hashCode(p);
     result = prime * result + ((palo == null) ? 0 : palo.hashCode());
     return result;
   }
@@ -69,10 +71,14 @@ public class Carta {
     if (getClass() != obj.getClass())
       return false;
     Carta other = (Carta) obj;
+    if (!Arrays.equals(n, other.n))
+      return false;
     if (numero == null) {
       if (other.numero != null)
         return false;
     } else if (!numero.equals(other.numero))
+      return false;
+    if (!Arrays.equals(p, other.p))
       return false;
     if (palo == null) {
       if (other.palo != null)
