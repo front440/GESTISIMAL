@@ -12,9 +12,9 @@ Hola! Mi nombre es **Francisco Javier Campos Gutiérrez**, soy estudiante de Des
 
 Aprendemos **metodología** y diferentes componentes del lenguaje. A lo largo del trimestre realizamos los siguientes bloques de ejercicios.
 
- **- Estructuras Secuenciales**
- **- Estructuras Alternativas**
- **- Estructuras Repetitivas**
+ - **Estructuras Secuenciales**
+ - **Estructuras Alternativas**
+ - **Estructuras Repetitivas**
 
 ## 2do Trimestre
 
