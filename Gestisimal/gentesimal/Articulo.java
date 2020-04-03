@@ -3,6 +3,9 @@ package gentesimal;
 import excepciones.CantidadNegativaError;
 import excepciones.PrecioNegativoError;
 
+//import excepciones.CantidadNegativaError;
+//import excepciones.PrecioNegativoError;
+
 /**
  * 
  * @author Francisco
@@ -37,6 +40,7 @@ public class Articulo {
       setPrecioC(precioC);
       setPrecioV(precioV);
       setUnidades(unidades);
+
 
 
   }

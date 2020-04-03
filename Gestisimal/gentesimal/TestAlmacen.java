@@ -30,7 +30,7 @@ public class TestAlmacen {
   public static void main(String[] args) throws XMLInvalidoError, 
   CSVInvalidoError, JSONInvalidoError, NumberFormatException, PrecioNegativoError, CantidadNegativaError, CodigoNoExisteError {
 
-    //annadirVarios();
+    annadirVarios();
 
 
     do {
@@ -85,108 +85,15 @@ public class TestAlmacen {
 
   }
 
-  /**
-   * Método que exportará los artículos que haya en el almacen a un fichero JSON
-   * @param fichero
-   * @throws JSONInvalidoError
-   */
-  private static void exportaJSON() throws JSONInvalidoError {
-
-    String fichero = Teclado.getTexto("Introduce el nombre del fichero");
-    try {
-
-      almacen.exportaJSON(fichero);
-
-    } catch (JSONInvalidoError e) {
-      throw new JSONInvalidoError("Error al crear el fichero JSON " + fichero + ": " + e.getMessage());
-    }
-
+  private static void annadirVarios() throws PrecioNegativoError, CantidadNegativaError {
+    almacen.annadir("aaa", 10, 10, 10);
+    almacen.annadir("bbb", 20, 20, 20);
+    almacen.annadir("ccc", 30, 30, 30);
+    
   }
 
-  /**
-   * Método que importará un archivo JSON con artículos que añadiremos al almacen.
-   * @throws JSONInvalidoError
-   */
-  private static void importaJSON() throws JSONInvalidoError {
+  
 
-    String json = Teclado.getTexto("Introduce el nombre del fichero CSV.");
-    try {
-      almacen.importaJSON(json);
-    } catch (JSONInvalidoError e) {
-      throw new JSONInvalidoError("No se ha podido leer el archivo" + json + ": " + e.getMessage());
-    }
-
-  }
-
-  /**
-   * Método que importará un archivo XML con artículos que añadiremos al almacen.
-   * @throws XMLInvalidoError
-   */
-  private static void importaXML() throws XMLInvalidoError {
-    String xml = Teclado.getTexto("Introduce el nombre del fichero CSV.");
-    try {
-      almacen.importaXML(xml);
-    } catch (XMLInvalidoError e) {
-      throw new XMLInvalidoError("No se ha podido leer el archivo" + xml + ": " + e.getMessage());
-    }
-
-
-  }
-
-  private static void exportaXML() throws XMLInvalidoError {
-    String xml = Teclado.getTexto("Introduce el nombre del fichero XML.");
-    try {
-      almacen.exportaXML(xml);
-    } catch (XMLInvalidoError e) {
-      throw new XMLInvalidoError("No se ha podido leer el archivo" + xml + ": " + e.getMessage());
-    }
-
-  }
-
-  /**
-   * Método que importará un archivo XML con artículos que añadiremos al almacen.
-   * @throws CSVInvalidoError 
-   * @throws PrecioNegativoError 
-   * @throws NumberFormatException 
-   * @throws CantidadNegativaError 
-   */
-  private static void importaCSV() throws CSVInvalidoError, NumberFormatException, PrecioNegativoError, CantidadNegativaError {
-    String csv = Teclado.getTexto("Introduce el nombre del fichero CSV.");
-    try {
-      almacen.importarCSV(csv);
-    } catch (CSVInvalidoError e) {
-      throw new CSVInvalidoError("No se ha podido leer el archivo " + csv +": " + e.getMessage());
-    }
-
-  }
-
-  /**
-   * Método que exportará artículos de almacen a documento CSV
-   * @throws CSVInvalidoError 
-   */
-  private static void exportaCSV() throws CSVInvalidoError {
-    String csv = Teclado.getTexto("Introduce el nombre del fichero CSV.");
-    try {
-      almacen.exportaCSV(csv);
-    } catch (CSVInvalidoError e) {
-      throw new CSVInvalidoError("No se ha podido leer el archivo" + csv + ": " + e.getMessage());
-    }
-
-  }
-
-  //  private static void annadirVarios() {
-  //    almacen.annadir("aa", 11, 11, 11);
-  //    //almacen.annadir("bb", 22, 22, 22);
-  //    //almacen.annadir("cc", 33, 33, 33);
-  //  }
-
-  /**
-   * Método que imprime por pantalla los artículos del arraylist de almacen
-   */
-  private static void muestra() {
-    almacen.muestra();
-
-  }
 
   /**
    * Método que añade artículos al ArrayList
@@ -218,54 +125,7 @@ public class TestAlmacen {
     if (!almacen.borrar(codigo)) System.err.println("Código inexistente");
 
   }
-
-  /**
-   * El siguiente método incrementa las unidades del artículo
-   * @throws CodigoNoExisteError 
-   * @throws CantidadNegativaError 
-   */
-  private static void incrementa() throws CodigoNoExisteError {
-
-    try {
-
-      int codigo = Teclado.getEntero("Código del producto que desea incrementar: ");
-      int cantidad = Teclado.getEntero("Cantidad a incrementar: ");
-
-
-      almacen.incrementa(codigo, cantidad);
-
-
-    } catch (CodigoNoExisteError e) {
-      throw new CodigoNoExisteError("No se ha podido incrementar artículo: " + e.getMessage());
-    } catch (CantidadNegativaError e) {
-      throw new CodigoNoExisteError("No se ha podido incrementar artículo: " + e.getMessage());
-    }
-
-
-  }
-
-  /**
-   * El siguiente método decrementa las unidades del artículo.
-   * @throws CodigoNoExisteError 
-   * @throws CantidadNegativaError 
-   */
-  private static void decrementa() {
-    
-    try {
-      
-      int codigo = Teclado.getEntero("Codigo del producto que desea decrementar: ");
-      int cantidad = Teclado.getEntero("Cantidad a decrementar: ");
-      almacen.decrementa(codigo, cantidad);
-      
-    } catch (CodigoNoExisteError e) {
-      System.err.println("No se ha podido decrementar el artículo: " + e.getMessage());
-    } catch (CantidadNegativaError e) {
-      System.err.println("No se ha podido decrementar el artículo: " + e.getMessage());
-    }
-
-    
-  }
-
+  
   /**
    * Este método mofidifica la de descripción del artículo.
    * @throws CodigoNoExisteError 
@@ -292,6 +152,150 @@ public class TestAlmacen {
       System.err.println("La cantidad a decrementar no puede ser negativa " + e.getMessage());
     }
 
+
+  }
+
+  /**
+   * El siguiente método incrementa las unidades del artículo
+   * @throws CodigoNoExisteError 
+   * @throws CantidadNegativaError 
+   */
+  private static void incrementa() throws CodigoNoExisteError {
+
+    try {
+
+      int codigo = Teclado.getEntero("Código del producto que desea incrementar: ");
+      int cantidad = Teclado.getEntero("Cantidad a incrementar: ");
+
+
+      almacen.incrementa(codigo, cantidad);
+
+
+    } catch (CodigoNoExisteError e) {
+      System.err.println("No se ha podido incrementar artículo: " + e.getMessage());
+    } catch (CantidadNegativaError e) {
+      System.err.println("No se ha podido incrementar artículo: " + e.getMessage());
+    }
+
+
+  }
+
+  /**
+   * El siguiente método decrementa las unidades del artículo.
+   * @throws CodigoNoExisteError 
+   * @throws CantidadNegativaError 
+   */
+  private static void decrementa() {
+
+    try {
+
+      int codigo = Teclado.getEntero("Codigo del producto que desea decrementar: ");
+      int cantidad = Teclado.getEntero("Cantidad a decrementar: ");
+      almacen.decrementa(codigo, cantidad);
+
+    } catch (CodigoNoExisteError e) {
+      System.err.println("No se ha podido decrementar el artículo: " + e.getMessage());
+    } catch (CantidadNegativaError e) {
+      System.err.println("No se ha podido decrementar el artículo: " + e.getMessage());
+    }
+
+
+  }
+  
+  /**
+   * Método que imprime por pantalla los artículos del arraylist de almacen
+   */
+  private static void muestra() {
+    almacen.muestra();
+  
+  }
+  
+  /**
+   * Método que exportará los artículos que haya en el almacen a un fichero JSON
+   * @param fichero
+   * @throws JSONInvalidoError
+   */
+  private static void exportaJSON() throws JSONInvalidoError {
+
+    String fichero = Teclado.getTexto("Introduce el nombre del fichero");
+    try {
+
+      almacen.exportaJSON(fichero);
+
+    } catch (JSONInvalidoError e) {
+      System.err.println("Error al crear el fichero JSON " + fichero + ": " + e.getMessage());
+    }
+
+  }
+
+  /**
+   * Método que importará un archivo JSON con artículos que añadiremos al almacen.
+   * @throws JSONInvalidoError
+   */
+  private static void importaJSON() throws JSONInvalidoError {
+
+    String json = Teclado.getTexto("Introduce el nombre del fichero CSV.");
+    try {
+      almacen.importaJSON(json);
+    } catch (JSONInvalidoError e) {
+      throw new JSONInvalidoError("No se ha podido leer el archivo" + json + ": " + e.getMessage());
+    }
+
+  }
+
+  /**
+   * Método que importará un archivo XML con artículos que añadiremos al almacen.
+   * @throws XMLInvalidoError
+   */
+  private static void importaXML() throws XMLInvalidoError {
+    String xml = Teclado.getTexto("Introduce el nombre del fichero CSV.");
+    try {
+      almacen.importaXML(xml);
+    } catch (XMLInvalidoError e) {
+      System.err.println("No se ha podido crear el archivo" + xml + ". " + e.getMessage());
+    }
+
+
+  }
+
+  private static void exportaXML() throws XMLInvalidoError {
+    String xml = Teclado.getTexto("Introduce el nombre del fichero XML.");
+    try {
+      almacen.exportaXML(xml);
+    } catch (XMLInvalidoError e) {
+      System.err.println("No se ha podido leer el archivo" + xml + ": " + e.getMessage());
+    }
+
+  }
+
+  /**
+   * Método que importará un archivo XML con artículos que añadiremos al almacen.
+   * @throws CSVInvalidoError 
+   * @throws PrecioNegativoError 
+   * @throws NumberFormatException 
+   * @throws CantidadNegativaError 
+   */
+  private static void importaCSV() throws CSVInvalidoError, NumberFormatException, PrecioNegativoError, CantidadNegativaError {
+    String csv = Teclado.getTexto("Introduce el nombre del fichero CSV.");
+    try {
+      almacen.importarCSV(csv);
+    } catch (CSVInvalidoError e) {
+      System.err.println("No se ha podido leer el archivo " + csv +": " + e.getMessage());
+    }
+
+  }
+
+  /**
+   * Método que exportará artículos de almacen a documento CSV
+   * @throws CSVInvalidoError 
+   */
+  private static void exportaCSV() throws CSVInvalidoError {
+    String csv = Teclado.getTexto("Introduce el nombre del fichero CSV.");
+    try {
+      almacen.exportaCSV(csv);
+    } catch (CSVInvalidoError e) {
+      System.err.println("No se ha podido leer el archivo" + csv + ": " + e.getMessage());
+    }
 
   }
 

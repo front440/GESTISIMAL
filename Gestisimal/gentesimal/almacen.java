@@ -36,6 +36,13 @@ import excepciones.JSONInvalidoError;
 import excepciones.PrecioNegativoError;
 import excepciones.XMLInvalidoError;
 
+//import excepciones.CSVInvalidoError;
+//import excepciones.CantidadNegativaError;
+//import excepciones.CodigoNoExisteError;
+//import excepciones.JSONInvalidoError;
+//import excepciones.PrecioNegativoError;
+//import excepciones.XMLInvalidoError;
+
 /**
  * 
  * @author Francisco
@@ -126,9 +133,9 @@ public class almacen {
    * @throws CodigoNoExisteError 
    */
   public void decrementa(int codigo, int cantidad) throws CantidadNegativaError, CodigoNoExisteError {
-    
-      get(codigo).decrementaStock(cantidad);
-    
+
+    get(codigo).decrementaStock(cantidad);
+
   }
 
   /**
@@ -141,10 +148,10 @@ public class almacen {
    * @throws PrecioNegativoError 
    */
   public void modifica(int codigo, String descripcion, double precioC, double precioV, int numUnidades) throws CodigoNoExisteError, CantidadNegativaError, PrecioNegativoError {
-    
-      get(codigo).set(descripcion, precioC, precioV, numUnidades);
-      
-    
+
+    get(codigo).set(descripcion, precioC, precioV, numUnidades);
+
+
 
   }
 
@@ -211,11 +218,12 @@ public class almacen {
 
       while(linea != null) {
         String[] elementos = linea.split(",");
-        almacen.add(new Articulo(
-            elementos[1].replace("\"", ""), 
-            Double.parseDouble(elementos[2]), 
-            Double.parseDouble(elementos[3]), 
-            Integer.parseInt(elementos[4])));
+        annadir(elementos[1].replace("\"", ""), Double.parseDouble(elementos[2]), Double.parseDouble(elementos[3]), Integer.parseInt(elementos[4]));
+        //        almacen.add(new Articulo(
+        //            elementos[1].replace("\"", ""), 
+        //            Double.parseDouble(elementos[2]), 
+        //            Double.parseDouble(elementos[3]), 
+        //            Integer.parseInt(elementos[4])));
 
         linea = csv.readLine();
       }
@@ -285,11 +293,11 @@ public class almacen {
 
 
     } catch (IOException e) {
-      throw new XMLInvalidoError("Error al crear el documento " + xml + ": " + e.getMessage());
+      System.err.println("Error al crear el documento " + xml + ": " + e.getMessage());
     } catch (TransformerException e) {
-      throw new XMLInvalidoError("Error al convertir el documento " + xml + ": " + e.getMessage());
+      System.err.println("Error al convertir el documento " + xml + ": " + e.getMessage());
     } catch (ParserConfigurationException e) {
-      throw new XMLInvalidoError("Error al construir el documento: " + xml + ": " + e.getMessage());
+      System.err.println("Error al construir el documento: " + xml + ": " + e.getMessage());
     }
 
 
@@ -335,7 +343,7 @@ public class almacen {
       }
 
     } catch (Exception e) {
-      throw new XMLInvalidoError("Error al abrir el documento: " + xml + ": " + e.getMessage());
+      throw new XMLInvalidoError("Error al abrir el documento: " + xml);
     }
 
   }
@@ -373,7 +381,7 @@ public class almacen {
   public void importaJSON(String fichero) throws JSONInvalidoError {
 
     try {
-      
+
       // Leemos el fichero y lo pasamos a JSON
       BufferedReader bf = new BufferedReader(new FileReader(fichero));
       String json = bf.readLine();
