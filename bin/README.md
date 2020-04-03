@@ -24,12 +24,6 @@ Es el encargado de gestionar los artículos en el almacén, estos serán guardad
  4. **Incrementa Stock**: Incrementamos existencias del artículo.
  5. **Decrementa Stock**: Incrementamos existencias del artículo.
  6. **Mostrar**: Mostramos los atributos del artículo.
- 7. **Exportar CSV**: Exportamos los artículos de almacén a un archivo **CSV**.
- 8. **Exportar XML**: Exportamos los artículos de almacén a un archivo **XML**.
- 9. **Exportar JSON**: Exportamos los artículos de almacén a un archivo **JSON**.
- 10. **Importar CSV**: Importamos los artículos de un fichero **CSV** a nuestro almacén.
- 11. **Importar XML**: Importamos los artículos de un fichero **XML** a nuestro almacén.
- 12. **Importar JSON**: Importamos los artículos de un fichero **JSON** a nuestro almacén.
 
 ## Clase Test
 En ella realizaremos la comunicación con el usuario y desde la cual manipularemos el almacén. Tendremos un menú desde el cual se harán llamadas a los métodos que delegarán el trabajo a las clases almacén y artículo a su vez

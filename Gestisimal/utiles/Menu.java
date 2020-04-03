@@ -65,6 +65,7 @@ public class Menu {
   private int recogerOpcion() {
       int opcion;
       do {
+        System.out.println("introduce una opción: ");
           opcion = Teclado.getEntero();
       } while (opcion < 1 || opcion > numOpciones);
       return opcion;
