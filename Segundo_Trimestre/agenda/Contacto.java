@@ -50,44 +50,44 @@ package agenda;
  */
 
 public class Contacto {
-	
-	private String nombre;
-	private String telefono;
-	private String direccion;
-	private String correo;
-	
-	/**
-	 * Método constructor de contacto
-	 * @param nombre
-	 * @param telefono
-	 * @throws ContactoInvalidoException 
-	 */
-	public Contacto(String nombre, String telefono) throws ContactoInvalidoException {
-	  setNombre(nombre);
+
+  private String nombre;
+  private String telefono;
+  private String direccion;
+  private String correo;
+
+  /**
+   * Método constructor de contacto
+   * @param nombre
+   * @param telefono
+   * @throws ContactoInvalidoException 
+   */
+  public Contacto(String nombre, String telefono) throws ContactoInvalidoException {
+    setNombre(nombre);
     setTelefono(telefono);
   }
-	
-	/**
-	 * Método contructor de contacto
-	 * @param nombre
-	 * @param telefono
-	 * @param direccion
-	 * @throws ContactoInvalidoException 
-	 */
-	public Contacto(String nombre, String telefono, String direccion) throws ContactoInvalidoException {
-	  setNombre(nombre);
+
+  /**
+   * Método contructor de contacto
+   * @param nombre
+   * @param telefono
+   * @param direccion
+   * @throws ContactoInvalidoException 
+   */
+  public Contacto(String nombre, String telefono, String direccion) throws ContactoInvalidoException {
+    setNombre(nombre);
     setTelefono(telefono);
     setDireccion(direccion);
   }
 
   /**
-	 * Método constructor de contacto
-	 * @param nombre
-	 * @param telefono
-	 * @param direccion
-	 * @param correo
-	 * @throws ContactoInvalidoException 
-	 */
+   * Método constructor de contacto
+   * @param nombre
+   * @param telefono
+   * @param direccion
+   * @param correo
+   * @throws ContactoInvalidoException 
+   */
   public Contacto(String nombre, String telefono, String direccion, String correo) throws ContactoInvalidoException {
     setNombre(nombre);
     setTelefono(telefono);
@@ -96,7 +96,7 @@ public class Contacto {
   }
 
   // Métodos de obtención y establecimiento
-  
+
   public String getNombre() {
     return nombre;
   }
@@ -199,5 +199,5 @@ public class Contacto {
         +   "Correo: " + correo + "\n"
         +   "------------------------------------";
   }
-  
+
 }
